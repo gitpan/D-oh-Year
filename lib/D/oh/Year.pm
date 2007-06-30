@@ -132,7 +132,7 @@ Cleaned up and maintained by Michael G Schwern <schwern@pobox.com>.
 =cut
 
 use vars qw($VERSION);
-$VERSION = 0.04;
+$VERSION = '0.05';
 
 sub _mk_localtime {
     my($reaction) = shift;

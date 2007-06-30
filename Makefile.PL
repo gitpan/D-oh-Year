@@ -1,21 +1,12 @@
-# A template for Makefile.PL used by Arena Networks.
-# - Set the $PACKAGE variable to the name of your module.
-# - Set $LAST_API_CHANGE to reflect the last version you changed the API 
-#   of your module.
-# - Fill in your dependencies in PREREQ_PM
-# Alternatively, you can say the hell with this and use h2xs.
+#!/usr/bin/perl
 
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
 
 $PACKAGE = 'D::oh::Year';
 ($PACKAGE_FILE) = $PACKAGE =~ /::([^:]+)/;
 $LAST_API_CHANGE = 0;
 
-eval {
-    eval "require $PACKAGE";
-};
+eval "require $PACKAGE";
 
 unless ($@) { # Make sure we did find the module.
     print <<"CHANGE_WARN" if ${$PACKAGE.'::VERSION'} < $LAST_API_CHANGE;
@@ -28,12 +19,11 @@ CHANGE_WARN
 }
 
 WriteMakefile(
-	NAME               	=> $PACKAGE,
-	VERSION_FROM       	=> "lib/D/oh/Year.pm", # finds $VERSION
-    PREREQ_PM          	=> { overload	=> 0,
-						   },
-	'dist'      		=> { COMPRESS 	=> 'gzip -9',
-                             SUFFIX   	=> '.gz',
-                             DIST_DEFAULT 	=> 'all tardist',
-                           },
+    NAME                => $PACKAGE,
+    VERSION_FROM        => "lib/D/oh/Year.pm", # finds $VERSION
+    PREREQ_PM           => {
+        overload    => 0,
+        fields      => 0,
+        'Test::More'=> 0.47,
+    },
 );

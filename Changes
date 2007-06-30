@@ -1,0 +1,3 @@
+0.05  Sat Jun 30 02:22:09 CDT 2007
+    Bug fixes
+    - Declare dependency on fields.pm
