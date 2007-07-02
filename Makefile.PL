@@ -23,7 +23,7 @@ WriteMakefile(
     VERSION_FROM        => "lib/D/oh/Year.pm", # finds $VERSION
     PREREQ_PM           => {
         overload    => 0,
-        fields      => 0,
+        fields      => 1.02,  # fields::new()
         'Test::More'=> 0.47,
     },
 );

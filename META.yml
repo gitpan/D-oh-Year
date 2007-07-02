@@ -1,12 +1,12 @@
 --- #YAML:1.0
 name:                D-oh-Year
-version:             0.05
+version:             0.06
 abstract:            ~
 license:             ~
-generated_by:        ExtUtils::MakeMaker version 6.32
+generated_by:        ExtUtils::MakeMaker version 6.34
 distribution_type:   module
 requires:     
-    fields:                        0
+    fields:                        1.02
     overload:                      0
     Test::More:                    0.47
 meta-spec:

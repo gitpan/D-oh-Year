@@ -132,7 +132,7 @@ Cleaned up and maintained by Michael G Schwern <schwern@pobox.com>.
 =cut
 
 use vars qw($VERSION);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 sub _mk_localtime {
     my($reaction) = shift;
@@ -190,9 +190,6 @@ use fields qw(_Year _Reaction);
 
 use strict;
 
-use vars qw($VERSION);
-$VERSION = 0.01;
-
 use overload    '.'     =>  \&concat,
                 '""'    =>  \&stringize,
                 '0+'    =>  \&numize,
@@ -206,15 +203,11 @@ sub new {
     my $class = ref $proto || $proto;
     my($year, $reaction) = @_;
 
-    my $self;
-    {
-        no strict 'refs';
-        $self = [\%{$class.'::FIELDS'}];
-    }
+    my $self = fields::new($class);
     $self->{_Year}      = $year;
     $self->{_Reaction}  = $reaction || 'die';
 
-    return bless $self => $class;
+    return $self;
 }
 
 
@@ -267,9 +260,6 @@ use fields qw(_Time _Reaction);
 
 use strict;
 
-use vars qw($VERSION);
-$VERSION = 0.01;
-
 use overload    '""'    =>  \&stringize,
                 '0+'    =>  \&numize,
                 'fallback'  =>  'TRUE',
@@ -281,15 +271,11 @@ sub new {
     my $class = ref $proto || $proto;
     my($time, $reaction) = @_;
 
-    my $self;
-    {
-        no strict 'refs';
-        $self = [\%{$class.'::FIELDS'}];
-    }
+    my $self = fields::new($class);
     $self->{_Time}      = $time;
     $self->{_Reaction}  = $reaction || 'die';
 
-    return bless $self => $class;
+    return $self;
 }
 
 
